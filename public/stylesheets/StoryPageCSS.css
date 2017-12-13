@@ -1,0 +1,41 @@
+#mainBlock img{
+    max-width: 100%;
+    margin-bottom: 30px;
+}
+#portraitBlock-Header{
+    width: 55px;
+    height: 55px;
+}
+#portraitBlock-Footer{
+    width: 100px;
+    height: 100px;
+}
+#nameAndTimeBlock{
+    margin-top: -7px;
+    margin-left: -25px;
+}
+#followButtonBlock{
+    margin-left: -25px;
+}
+
+.imageBlock{
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+#YaoYueButtonBlock{
+    margin-left: -11px;
+}
+.footButtonBlock{
+    width: 60px;
+}
+.starBlock{
+    color: #E5322E;
+}
+.starBlock>span:last-child{
+    color: #000;
+}
+.starBlock>span>b{
+    font-size: 120%;
+}

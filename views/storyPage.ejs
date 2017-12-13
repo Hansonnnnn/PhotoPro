@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>和Ta们的故事</title>
+    <link href="/stylesheets/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/LoginPageCSS.css" rel="stylesheet">
+    <link href="/stylesheets/CommonCSS.css" rel="stylesheet">
+    <link href="/stylesheets/StoryPageCSS.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid">
+    <%- include("./header.ejs")%>
+    <br>
+    <div class="row">
+        <!--id="mainBlock"-->
+        <div class="col-sm-6 col-sm-offset-3" >
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-sm-1 portraitBlock" id="portraitBlock-Header">
+                        <img src="<%=portrait%>" width="53px" height="53px" style="margin-left: -16px; padding: 1px 2px 3px; border-radius: 6px">
+                    </div>
+                    <div class="col-sm-10" id="nameAndTimeBlock">
+                        <h4><%=pname%></h4>
+                        <p><%=timeAndLocation%></p>
+                    </div>
+                    <div class="col-sm-1" id="followButtonBlock">
+                        <button type="button" class="btn btn-primary">+ 关注</button>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row" id="mainBlock">
+                <div class="col-sm-12">
+                    <h3><%=title%></h3>
+                    <!--<div class="imageBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/7cd809cf-2c7f-46f0-adc5-a1f63886d2f7.jpg?aki_policy=xx_large)"></div>-->
+                    <% for(var i = 0; i < images.length; i++){ %>
+                    <img src="<%=images[i]%>">
+                    <% } %>
+                    <!--<img src="https://cn-ali.muscache.com/im/pictures/cf8ecdf6-bc97-4ccc-ab67-283c152f2e53.jpg?aki_policy=xx_large_portrait">-->
+                    <!--<img src="https://cn-ali.muscache.com/im/pictures/ec181a50-0733-4e26-a385-61f7ad9fe364.jpg?aki_policy=xx_large">-->
+                    <h3><%=title%></h3>
+                    <hr>
+                    <% for(var j = 0; j < contents.length; j++){ %>
+                    <p><%=contents[j]%></p>
+                    <% } %>
+
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>关于我们</h4>
+                    <hr>
+                    <div class="col-sm-1 portraitBlock" id="portraitBlock-Footer">
+                        <img src="<%=portrait%>" width="98px" height="98px" style="margin-left: -16px; padding: 1px 2px 3px; border-radius: 6px">
+                    </div>
+                    <div class="col-sm-8">
+                        <h4><%=pname%></h4>
+                        <p><%=slogan%></p>
+                        <div class="starBlock">
+                            <% for(var k = 0; k < stars; k++){ %>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <% } %>
+                            <span>累计被邀约YaoYue<b> <%=times%> </b>次</span>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-2" id="YaoYueButtonBlock">
+                        <br>
+                        <button style="outline: none;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#YaoYueModal">邀约YaoYue</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <hr>
+                <div class="col-sm-12 text-center ">
+                    <button type="button" class="btn btn-danger footButtonBlock">赞</button>
+                    <button type="button" class="btn btn-primary footButtonBlock">收藏</button>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="login-wrap">
+            <div class="login-html">
+                <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+                <div class="login-form">
+                    <div class="sign-in-htm">
+                        <div class="group">
+                            <label for="user" class="label">Username</label>
+                            <input id="user" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Password</label>
+                            <input id="pass" type="password" class="input" data-type="password">
+                        </div>
+                        <div class="group">
+                            <input id="check" type="checkbox" class="check" checked>
+                            <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Sign In">
+                        </div>
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <label><a href="#forgot">Forgot Password?</a></label>
+                        </div>
+                    </div>
+                    <div class="sign-up-htm">
+                        <div class="group">
+                            <label for="user" class="label">Username</label>
+                            <input id="user" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Password</label>
+                            <input id="pass" type="password" class="input" data-type="password">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Repeat Password</label>
+                            <input id="pass" type="password" class="input" data-type="password">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Email Address</label>
+                            <input id="pass" type="text" class="input">
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="button" value="Sign Up" id="signUpButton">
+                        </div>
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <label for="tab-1"><a>Already Member?</a></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="YaoYueModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="loginModalLabel">填写邀约YaoYue信息</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label for="nameField" class="control-label">真实姓名</label>
+                                <input type="text" id="nameField" class="form-control" placeholder="请输入您的真实姓名：">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="telField" class="control-label">手机号</label>
+                                <input type="tel" id="telField" class="form-control" placeholder="请输入您的手机号：">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="addressField">拍摄地点</label>
+                        <input type="text" id="addressField" class="form-control" placeholder="请输入为您拍摄照片的拍摄地点：">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">您期望的合理的价格区间</label>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <input type="number" class="form-control" placeholder="您认为合理的最低价格">
+                            </div>
+                            <div class="col-sm-2 text-center">
+                                <p class="form-control-static">--</p>
+                            </div>
+                            <div class="col-sm-5">
+                                <input type="number" class="form-control" placeholder="您认为合理的最高价格">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">拍摄内容描述</label>
+                        <textarea id="" class="form-control" rows="4" placeholder="这里请您写下关于您期望拍摄的照片、视频、作品的内容主题"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="requirementsField">拍摄要求</label>
+                        <textarea id="requirementsField" class="form-control" rows="4" placeholder="这里请您写下关于您对照片或摄影师的要求"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">发送邀约YaoYue</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/javascripts/jQuery/jquery-3.2.1.min.js"></script>
+<script src="/stylesheets/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+</html>

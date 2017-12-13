@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/stylesheets/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/CommonCSS.css" rel="stylesheet">
+    <link href="/stylesheets/LoginPageCSS.css" rel="stylesheet">
+    <link href="/stylesheets/docs.css" rel="stylesheet">
+    <link href="/stylesheets/cropper.css" rel="stylesheet">
+    <link href="/stylesheets/pPageCSS.css" rel="stylesheet">
+</head>
+<body data-spy="scroll" data-target=".scrollspy">
+
+<div class="container-fluid">
+    <%- include("./header.ejs")%>
+    <div id="backLocationHelper_topLocation"></div>
+
+    <div class="row mainBodyOuterSettings">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="row headerBlock whiteBackgroundColor" id="headerBlock">
+                <div class="col-md-2 text-center">
+                    <div class="logoBlock" id="logoBlock" style="background-image: url(<%=information[0].portrait%>)"></div>
+                    <div class="row">
+                        <br>
+                        <div class="col-md-7">
+                            <h4 class="nameMargin" id="mainContent_Name"><%=information[0].pname%></h4>
+                        </div>
+                        <div class="col-md-5">
+                            <% if(followed){ %>
+                            <button type="button" class="btn btn-default btn-sm followButton">取消关注</button>
+                            <% }else{ %>
+                            <button type="button" class="btn btn-primary btn-sm followButton">+ 关注</button>
+                            <% } %>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-md-4">
+                    <div class="headerBlock-label-settings">
+                        <span class="h5 label label-primary">入驻时间：</span>
+                        <span class="h5"><%=information[0].inTime%></span>
+                    </div>
+                    <div class="headerBlock-label-settings">
+                        <span class="h5 label label-default">所在地点：</span>
+                        <span class="h5"><%=information[0].location%></span>
+                    </div>
+                    <div class="headerBlock-label-settings">
+                        <span class="h5 label label-danger">作品风格：</span>
+                        <span class="h5"><%=information[0].style%></span>
+                    </div>
+                    <div class="headerBlock-label-settings">
+                        <span class="h5 label label-info">主页浏览次数：</span>
+                        <span class="h5"><%=information[0].cv%></span>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="headerBlock-mainIndex-innerSettings">
+                        <h2 class="verticalCenter"><%=information[0].goodrate%>%</h2>
+                        <h4>好评程度</h4>
+                    </div>
+
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="headerBlock-mainIndex-innerSettings">
+                        <h2 class="verticalCenter"><%=information[0].times%>次</h2>
+                        <h4>邀约次数</h4>
+                    </div>
+
+                </div>
+                <div class="col-md-2 text-center">
+                    <div class="headerBlock-mainIndex-innerSettings text-center">
+                        <h2 class="verticalCenter"><%=information[0].worksnum%>+</h2>
+                        <h4>收录作品数</h4>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row whiteBackgroundColor">
+                <div class="col-md-11 buttonMargin">
+                    <button style="outline: none;" type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#YaoYueModal"><span class="glyphicon glyphicon-send"></span> 发送邀约YaoYue</button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-10  whiteBackgroundColor" role="main">
+                    <div class="mainBodyInnerSettings">
+                        <div id="backLocationHelper_time"></div>
+                        <h3 id="setupTimeTag">工作室成立时间</h3>
+                        <hr>
+                        <p><%=information[0].startUpTime%></p>
+                        <br>
+                        <div id="backLocationHelper_memeber"></div>
+                        <h3 id="memberTag">工作室成员</h3>
+                        <hr>
+                        <h4><%=information[0].pname%></h4>
+                        <br>
+                        <p><%=information[0].intro%></p>
+
+                        <br>
+                        <div id="backLocationHelper_slogan"></div>
+                        <h3 id="sloganTag">Slogan</h3>
+                        <hr>
+                        <p><%=information[0].slogan%></p>
+                        <br>
+                        <div id="backLocationHelper_prize"></div>
+                        <h3 id="prizeTag">获奖作品</h3>
+                        <hr>
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <img class="img-responsive"  src="https://cn-ali.muscache.com/im/pictures/ec181a50-0733-4e26-a385-61f7ad9fe364.jpg?aki_policy=xx_large" alt="日本"  >
+                                    <div class="carousel-caption">
+                                        2017 IPA国际摄影奖（深度视角）专业组 深度视角 一等奖
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="https://cn-ali.muscache.com/im/pictures/53c82261-665e-41f3-91d6-281db16062e7.jpg?aki_policy=xx_large" alt="日本">
+                                    <div class="carousel-caption">
+                                        2017 IPA国际摄影奖（深度视角）专业组 深度视角 一等奖
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="https://cn-ali.muscache.com/im/pictures/24898578-413c-414d-b4b5-cb4c83550b7f.jpg?aki_policy=xx_large" alt="日本">
+                                    <div class="carousel-caption">
+                                        2017 IPA国际摄影奖（深度视角）专业组 深度视角 一等奖
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="https://cn-ali.muscache.com/im/pictures/843c1d6d-f7cb-4b54-aa87-76976fa89025.jpg?aki_policy=xx_large" alt="杭州">
+                                    <div class="carousel-caption">
+                                        2017 IPA国际摄影奖（深度视角）专业组 深度视角 一等奖
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="https://cn-ali.muscache.com/im/pictures/01d971d4-38b2-4198-8bfe-085ffaa3ed24.jpg?aki_policy=xx_large" alt="杭州">
+                                    <div class="carousel-caption">
+                                        2017 IPA国际摄影奖（深度视角）专业组 深度视角 一等奖
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img src="https://cn-ali.muscache.com/im/pictures/951a7af3-df3d-4b22-8413-32fa28eed3b1.jpg?aki_policy=xx_large" alt="杭州">
+                                    <div class="carousel-caption">
+                                        2017 IPA国际摄影奖（深度视角）专业组 深度视角 一等奖
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Controls -->
+                            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                        <br>
+                        <div id="backLocationHelper_price"></div>
+                        <div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h3 id="beforePriceTag">主要作品展示</h3>
+
+
+
+
+
+
+
+
+
+                                </div>
+                                <div class="col-md-3 col-md-offset-6 titleBlockButton">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadImageModal">上传作品</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr>
+                        <br>
+                        <div id="backLocationHelper_story"></div>
+                        <h3 id="storyTag">和Ta们的故事</h3>
+                        <hr>
+                        <div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="storySingleBlock">
+                                        <div class="imgBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/365e4ce9-836e-459a-a3b1-47677484eecb.jpg?aki_policy=large)"></div>
+                                        <!--<div style=" width: 100%;height: 100%;background-image: url(https://cn-ali.muscache.com/im/pictures/dbed6dd0-71b2-4168-b7be-55608be5aa01.jpg?aki_policy=large); position: absolute !important; background-position: 50% 50%;background-size: cover !important;"></div>-->
+                                        <h4 class="text-center">重庆</h4>
+                                        <p class="text-center">自在山城 | Coffee Holic</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="storySingleBlock">
+                                        <div class="imgBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/1d3d6aba-7c2f-4fbc-8f16-466b0886cab0.jpg?aki_policy=large)"></div>
+
+                                        <!--<div style=" width: 100%;height: 100%;background-image: url(https://cn-ali.muscache.com/im/pictures/dbed6dd0-71b2-4168-b7be-55608be5aa01.jpg?aki_policy=large); position: absolute !important; background-position: 50% 50%;background-size: cover !important;"></div>-->
+                                        <h4 class="text-center">京都</h4>
+                                        <p class="text-center">京都，今年的樱花开得有点迟</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="storySingleBlock" >
+                                        <div class="imgBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/51a56842-1b88-4f3e-a65f-b56001e71aef.jpg?aki_policy=large)"></div>
+                                        <!--<div style=" width: 100%;height: 100%;background-image: url(https://cn-ali.muscache.com/im/pictures/dbed6dd0-71b2-4168-b7be-55608be5aa01.jpg?aki_policy=large); position: absolute !important; background-position: 50% 50%;background-size: cover !important;"></div>-->
+                                        <h4 class="text-center">巴塞罗那</h4>
+                                        <p class="text-center">众神的万花筒，最美的音乐厅</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="storySingleBlock">
+                                        <div class="imgBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/d12b6e01-91ea-4033-a3ba-ac513cb384bd.jpg?aki_policy=large)"></div>
+                                        <!--<div style=" width: 100%;height: 100%;background-image: url(https://cn-ali.muscache.com/im/pictures/dbed6dd0-71b2-4168-b7be-55608be5aa01.jpg?aki_policy=large); position: absolute !important; background-position: 50% 50%;background-size: cover !important;"></div>-->
+                                        <h4 class="text-center">俄罗斯</h4>
+                                        <p class="text-center">闪闪发光的喀纳斯 旅途绘话</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="storySingleBlock">
+                                        <div class="imgBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/f9ee732c-632c-415a-b67f-70539a8a293c.jpg?aki_policy=large)"></div>
+
+                                        <!--<div style=" width: 100%;height: 100%;background-image: url(https://cn-ali.muscache.com/im/pictures/dbed6dd0-71b2-4168-b7be-55608be5aa01.jpg?aki_policy=large); position: absolute !important; background-position: 50% 50%;background-size: cover !important;"></div>-->
+                                        <h4 class="text-center">台北</h4>
+                                        <p class="text-center">美丽华摩天轮下的免费大师音乐会</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="storySingleBlock">
+
+                                        <div class="imgBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/6bf5177a-b397-4928-93d7-3218a88eb323.jpg?aki_policy=large)"></div>
+                                        <!--<div style=" width: 100%;height: 100%;background-image: url(https://cn-ali.muscache.com/im/pictures/dbed6dd0-71b2-4168-b7be-55608be5aa01.jpg?aki_policy=large); position: absolute !important; background-position: 50% 50%;background-size: cover !important;"></div>-->
+                                        <h4 class="text-center">北京</h4>
+                                        <p class="text-center">不知道就来不知道诊所 #AirFam#</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="storySingleBlock">
+                                        <div class="imgBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/c88b731a-7de7-4f8e-b504-589bbcdce305.jpg?aki_policy=large)"></div>
+                                        <!--<div style=" width: 100%;height: 100%;background-image: url(https://cn-ali.muscache.com/im/pictures/dbed6dd0-71b2-4168-b7be-55608be5aa01.jpg?aki_policy=large); position: absolute !important; background-position: 50% 50%;background-size: cover !important;"></div>-->
+                                        <h4 class="text-center">美国</h4>
+                                        <p class="text-center">在加州彩色小镇，住进半悬空的帐篷</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="storySingleBlock">
+                                        <div class="imgBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/2617a009-fb31-439c-8c3e-7bb7ac2d4779.jpg?aki_policy=large)"></div>
+
+                                        <!--<div style=" width: 100%;height: 100%;background-image: url(https://cn-ali.muscache.com/im/pictures/dbed6dd0-71b2-4168-b7be-55608be5aa01.jpg?aki_policy=large); position: absolute !important; background-position: 50% 50%;background-size: cover !important;"></div>-->
+                                        <h4 class="text-center">旧金山</h4>
+                                        <p class="text-center">在海湾小船里， 把食材变成颜料，制作手绘明信片</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="storySingleBlock">
+                                        <div class="imgBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/b62bd42d-7ab0-47ad-b472-345af0a38605.jpg?aki_policy=large)"></div>
+                                        <!--<div style=" width: 100%;height: 100%;background-image: url(https://cn-ali.muscache.com/im/pictures/dbed6dd0-71b2-4168-b7be-55608be5aa01.jpg?aki_policy=large); position: absolute !important; background-position: 50% 50%;background-size: cover !important;"></div>-->
+                                        <h4 class="text-center">威尼斯</h4>
+                                        <p class="text-center">美到窒息，这家民宿的露台是求婚胜地</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 scrollspy" role="complementary">
+                    <!--data-offset-bottom="300"-->
+                    <nav class="affix-top" data-spy="affix"  data-offset-top="206" >
+                        <ul class="nav hidden-xs hidden-sm">
+                            <li><a href="#setupTimeTag">工作室成立时间</a></li>
+                            <li><a href="#memberTag">工作室成员</a></li>
+                            <li><a href="#sloganTag">Slogan</a></li>
+                            <li><a href="#prizeTag">获奖作品</a></li>
+                            <li><a href="#beforePriceTag">主要作品展示</a></li>
+                            <li><a href="#storyTag">和Ta们的故事</a></li>
+                        </ul>
+                        <a id="backToLocator" href="#backLocationHelper_topLocation">返回顶部</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<%- include("loginPage.ejs")%>
+<div class="modal fade" id="YaoYueModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="loginModalLabel">填写邀约YaoYue信息</h4>
+            </div>
+            <div class="modal-body">
+                <form id="yaoyueForm">
+                    <div class="form-group has-feedback">
+                        <div class="row">
+                            <div class="col-sm-6" id="nameBlock">
+                                <label for="nameField" class="control-label">真实姓名</label>
+                                <input type="text" id="nameField" class="form-control " placeholder="请输入您的真实姓名：">
+                                <span class="glyphicon form-control-feedback specialSpan disappear" aria-hidden="true"></span>
+                            </div>
+                            <div class="col-sm-6" id="telBlock">
+                                <label for="telField" class="control-label">手机号</label>
+                                <input type="tel" id="telField" class="form-control" placeholder="请输入您的手机号：">
+                                <span class="glyphicon form-control-feedback specialSpan disappear" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback" id="locationBlock">
+                        <label class="control-label" for="locationField">拍摄地点</label>
+                        <input type="text" id="locationField" class="form-control" placeholder="请输入为您拍摄照片的拍摄地点：">
+                        <span class="glyphicon form-control-feedback disappear" aria-hidden="true"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <div class="row">
+                            <!--<div class="col-md-12">-->
+                                <!--<label class="control-label">您期望的合理的价格区间</label>-->
+                            <!--</div>-->
+                            <div class="col-sm-5" id="lowPriceBlock">
+                                <label class="control-label">最低价</label>
+                                <input type="number" id="lowPriceField" class="form-control" placeholder="您认为合理的最低价格">
+                                <span class="glyphicon form-control-feedback specialSpan disappear" aria-hidden="true"></span>
+                            </div>
+                            <div class="col-sm-2 text-center">
+                                <p class="form-control-static" style="margin-top: 25px">--</p>
+                            </div>
+                            <div class="col-sm-5" id="highPriceBlock">
+                                <label class="control-label">最高价</label>
+                                <input type="number" id="highPriceField" class="form-control" placeholder="您认为合理的最高价格">
+                                <span class="glyphicon form-control-feedback specialSpan disappear" aria-hidden="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">拍摄内容描述</label>
+                        <textarea id="desField" class="form-control" rows="4" placeholder="这里请您写下关于您期望拍摄的照片、视频、作品的内容主题"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="requirementsField">拍摄要求</label>
+                        <textarea id="requirementsField" class="form-control" rows="4" placeholder="这里请您写下关于您对照片或摄影师的要求"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="sendButton">发送邀约YaoYue</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="uploadImageModal" tabindex="-1" role="dialog" aria-labelledby="upImgModalLabel">
+    <div class="container-fluid modalHolder">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <img id="preview" class="imgPreview">
+                <br>
+                <form method='post' action='/file/uploading' enctype='multipart/form-data'>
+                    <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" name="file"  onchange="imagePreview(this)">
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-primary" id="uploadButton">上传照片</button>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1 col-md-offset-8">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<%- include("./hintDialog.ejs")%>
+</body>
+<script src="/javascripts/jQuery/jquery-3.2.1.min.js"></script>
+<script src="/stylesheets/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+<script src="/javascripts/js_lib/imagesloaded.pkgd.min.js"></script>
+<script src="/javascripts/js_lib/masonry.pkgd.min.js"></script>
+<script src="/javascripts/js_lib/salvattore.min.js"></script>
+<!--<script src="../js/vue.js"></script>-->
+<script src="/javascripts/cropper.js"></script>
+<script src="/javascripts/docs.js"></script>
+<script src="/javascripts/hintDialogJS.js"></script>
+<script src="/javascripts/header.js"></script>
+<script type="text/javascript">
+    function imagePreview(fileDom){
+        //判断是否支持FileReader
+        if (window.FileReader) {
+            var reader = new FileReader();
+        } else {
+            alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+        }
+
+        //获取文件
+        var file = fileDom.files[0];
+        var imageType = /^image\//;
+        //是否是图片
+        if (!imageType.test(file.type)) {
+            alert("请选择图片！");
+            return;
+        }
+        //读取完成
+        reader.onload = function(e) {
+            //获取图片dom
+            var img = document.getElementById("preview");
+            //图片路径设置为读取的图片
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+
+    //取出的元素是下面要添加提示信息的元素
+    var $nameBlock = $("#nameBlock");
+    var $telBlock = $("#telBlock");
+    var $locationBlock = $("#locationBlock");
+    var $lowPriceBlock = $("#lowPriceBlock");
+    var $highPriceBlock = $("#highPriceBlock");
+    /**
+     * 验证条件和改变样式的抽象方法
+     * @param element DOM元素
+     * @param styleClass 需要添加样式的类型（error、success）
+     * @param node 需要新增加的节点
+     * 注意：添加正确的类时，要将错误的类删除
+     */
+    function validate(element, m_type) {
+        var tipSpan = $(element.find("span")[0]);
+        tipSpan.removeClass("disappear");
+        if(m_type === "success"){
+            element.removeClass("has-error");
+            element.addClass("has-success");
+            tipSpan.removeClass("glyphicon-remove")
+            tipSpan.addClass("glyphicon-ok")
+        }else{
+            element.removeClass("has-success");
+            element.addClass("has-error");
+            tipSpan.removeClass("glyphicon-ok")
+            tipSpan.addClass("glyphicon-remove")
+        }
+    }
+
+    function clearEffect() {
+
+    }
+
+    //获得摄影师名称
+    var pname = $("#mainContent_Name").text();
+
+
+    var urlRoot = "http://localhost:3000";
+    $(function () {
+        function signIn() {
+            var username = $("#usernameField_I").val();
+            var password = $("#passwordField_I").val();
+            if(username !== "" && username !== null && password !== "" && password !== null){
+                $.ajax({
+                    url: urlRoot + '/signIn',
+                    type:'POST', //POST
+                    async:true,    //或false,是否异步
+                    data:{
+                        username: username,
+                        password: password
+                    },
+                    dataType:'json',
+                    success:function(data){
+                        if(data.ret_code === 0){
+                            location.reload();
+                        }else if(data.ret_code === 1){
+                            alert("请输入正确的用户名或密码");
+//                            window.location.href = urlRoot + "/personalPage?username=" + username;
+                        }else{
+                            alert("session验证失败");
+                        }
+                    },
+                    error:function(xhr,textStatus){
+                        console.log('登录失败验证失败');
+                    }
+                })
+            }else{
+                alert("请输入正确的用户名或密码");
+            }
+
+        }
+        function signUp() {
+            var username = $("#usernameField_I").val();
+            var password = $("#passwordField_I").val();
+            var password_r = $("#passwordConfirmField").val();
+            var email = $("#emailField").val();
+        }
+
+        $("#signInButton").click(function (e) {
+            signIn();
+        })
+        $("#signUpButton").click(function (e) {
+            signUp();
+        })
+
+
+
+
+        $("#sendButton").click(function (e) {
+            var name = $("#nameField").val();
+            var tel = $("#telField").val();
+            var location = $("#locationField").val();
+            var lowPrice = $("#lowPriceField").val() * 1;
+            var highPrice = $("#highPriceField").val() *1;
+            var des = $("#desField").val();
+            var requirement = $("#requirementsField").val();
+            console.log("lowPrice: " + lowPrice);
+            console.log("highPrice: " + highPrice);
+            //            验证条件
+            var nameValidation = (name === "" || name === null);
+            var telValidation = (tel === "" || tel === null || tel.length !== 11);
+            var locationValidation = (location === "" || location === null);
+            var lowPriceValidation = (lowPrice === 0 || lowPrice === null);
+            var highPriceValidation = (highPrice === 0 || highPrice === null);
+            var highNotGreaterThanLow = (highPrice < lowPrice);
+//            逻辑思路：先分别判断每个单个条件，如果不满足，就提示错误，最后再整体判断全部满足条件，再提交表单
+            if(nameValidation)
+            {validate($nameBlock, "error");}
+            else
+            {validate($nameBlock, "success");}
+
+            if(telValidation)
+            {validate($telBlock, "error");}
+            else
+            {validate($telBlock, "success");}
+
+            if(locationValidation)
+            {validate($locationBlock, "error");}
+            else
+            {validate($locationBlock, "success");}
+
+            if(lowPriceValidation)
+            {validate($lowPriceBlock, "error");}
+            else
+            {validate($lowPriceBlock, "success")}
+
+            if(highPriceValidation){
+                validate($highPriceBlock, "error");
+            }else{
+                if(highPrice > lowPrice){
+                    validate($highPriceBlock, "success")
+                }else{
+                    validate($lowPriceBlock, "error");
+                    validate($highPriceBlock, "error");
+                }
+
+            }
+
+//            全部验证通过时，发送ajax请求
+            if((!nameValidation) && (!telValidation) && (!locationValidation) && (!lowPriceValidation) && (!highPriceValidation) && (!highNotGreaterThanLow)){
+                console.log("执行到验证所有条件成立的内部");
+                $.ajax({
+                    url: urlRoot + '/submitYaoYueForm',
+                    type:'POST', //POST
+                    async:true,    //或false,是否异步
+                    data:{
+                        realName: name,
+                        tel: tel,
+                        location: location,
+                        lowPrice: lowPrice,
+                        highPrice: highPrice,
+                        description: des,
+                        requirements: requirement,
+                        pname: pname
+                    },
+                    dataType:'json',
+                    success:function(data){
+                        if(data.ret_code === 0){
+//                            console.log("执行到了！！！！！！！");
+                            runIn("success", "发送成功!");
+                            setTimeout(runOut, 2500)
+                            setTimeout(function () {
+                                window.location.reload()
+                            }, 2000);
+
+                        }
+                    },
+                    error:function(xhr,textStatus){
+                        console.log('登录失败验证失败');
+                    }
+                })
+            }
+
+//            发送成功之后要有提示
+//            关闭Modal
+        });
+
+        $(".storySingleBlock").click(function (e) {
+            e.preventDefault();
+            var storyTitle = $(e.target).next().next().text()
+            $.ajax({
+                url: urlRoot + '/storyPage',
+                type:'POST', //POST
+                async:true,    //或false,是否异步
+                data:{
+                    pname: pname,
+                    storyTitle: storyTitle
+                },
+                dataType:'json',
+                success:function(data){
+                    console.log("跳转到故事页面前端接收到返回结果");
+                    window.location.href = data.redirectUrl;
+//                    if(data.ret_code === 0){
+//                        alert("YaoYue请求已发送");
+//                        window.location.reload();
+//                    }
+                },
+                error:function(xhr,textStatus){
+                    console.log('跳转到故事详情页面失败');
+                }
+            })
+        });
+
+        $(".followButton").click(function (e) {
+            e.preventDefault();
+            if($(this).text() === "取消关注"){
+                $.ajax({
+                    url: urlRoot + '/unFollow',
+                    async: true,
+                    type: "POST",
+                    data: {
+                        pname: pname
+                    },
+                    success: function (data) {
+                        $(".followButton").text("+ 关注").removeClass("btn-default").addClass("btn-primary");
+                    },
+                    error: function (error) {
+                        console.log(error + "photographerPage.ejs 取消关注前端失败");
+                    }
+                })
+            }else{
+                $.ajax({
+                    url: urlRoot + '/validateOnline',
+                    type: 'GET',
+                    async: true,
+                    success: function (data) {
+                        console.log("这里是验证是否登录的方法：" + data);
+                        if(data.isOnline){
+                            //如果已经登录，则执行关注进程
+                            $.ajax({
+                                url: urlRoot + '/follow',
+                                async: true,
+                                type: "POST",
+                                data: {
+                                    pname: pname
+                                },
+                                success: function (data) {
+//                                关注成功，将关注按钮变为取消关注
+                                    $(".followButton").text("取消关注").removeClass("btn-primary").addClass("btn-default");
+                                },
+                                error: function (error) {
+                                    console.log(error);
+                                }
+                            })
+                        }else{
+                            //如果未登录，提示请先登录
+                            runIn("warning", "请先登录！");
+                            setTimeout(runOut, 2000);
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err)
+                    }
+                })
+            }
+
+
+        })
+    })
+
+</script>
+</html>

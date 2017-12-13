@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/stylesheets/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/LoginPageCSS.css" rel="stylesheet">
+    <link href="/stylesheets/CommonCSS.css" rel="stylesheet">
+    <link href="/stylesheets/FirstPage.css" rel="stylesheet">
+    <title>CatalogContentPage</title>
+</head>
+<body>
+<div class="container-fluid">
+    <%- include("./header.ejs")%>
+    <div class="row">
+        <div class="jumbotron">
+            <h1>邀约摄影</h1>
+            <p>在这里，邀约到最适合您的摄影师</p>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="funcIntro">
+                <h3 class="text-center">The most suitable photographer</h3>
+                <p class="text-center">Our platform gives you the best photographers for you. Please feel free to experience the high-quality photography they bring to you.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="funcIntro">
+                <h3 class="text-center">Most touching photos</h3>
+                <p class="text-center">Each photo, not just a photo, it is a touching story. Our photographers want to help you record this touching moment in your life.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="funcIntro">
+                <h3 class="text-center">The most affordable price</h3>
+                <p class="text-center">We offer the ability to negotiate prices between you and the photographer to get what you want and take the best photos at the best prices for each other.</p>
+                <!--We offer the ability to negotiate prices between you and the photographer to get what you want and take the best photos at the best prices for each other.-->
+                <!--The most affordable price-->
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row ">
+        <div class="myCenter">
+            <div class="row">
+                <% for(var i=0;i<list.length;i++){ var u=list[i]; %>
+                <div class="col-md-4">
+                    <div class="secondBlock">
+                        <br>
+                        <div class="text-center imgUpFloat">
+                            <img id="<%=u.pname%>" src="<%=u.portrait%>" alt="..." class="img-circle" width="70px" height="70px" >
+                        </div>
+                        <div class="text-center">
+                            <h2><%=u.pname%></h2>
+                            <% for(var s = 0; s< 5; s++) { %>
+                            <span class="glyphicon glyphicon-star redStar"></span>
+                            <% } %>
+                            <h4>累计被邀约<%=u.year%>次</h4>
+                            <br>
+                            <div id="carousel-example-generic<%=u.id%>" class="carousel slide carouselMar myCenter" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-example-generic<%=u.id%>" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-example-generic<%=u.id%>" data-slide-to="1"></li>
+                                    <li data-target="#carousel-example-generic<%=u.id%>" data-slide-to="2"></li>
+                                </ol>
+
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner" role="listbox">
+                                    <% for(var j=0;j<u.paths.length;j++){var path=u.paths[j];var intro = u.intro[j]%>
+                                        <% if (j===0) { %>
+                                        <div class="item active">
+                                        <% } else { %>
+                                        <div class="item">
+                                        <% } %>
+                                            <img class="img-responsive" data-src="holder.js/1000x500/auto/#777:#555/text:First slide"
+                                                 alt="First slide [1000x500]"
+                                                 src="<%=path%>"
+                                                 data-holder-rendered="true">
+                                            <div class="carousel-caption"><%=intro%></div>
+                                        </div>
+                                     <% } %>
+                                    <a class="left carousel-control" href="#carousel-example-generic<%=u.id%>" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#carousel-example-generic<%=u.id%>" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+
+                                </div>
+
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <%}%>
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="jumbotron">
+            <h1>邀约摄影</h1>
+            <P>每一张照片背后，都是一段故事...</P>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row perListBlock">
+        <div class="col-md-12 myCenter">
+            <div class="row childTitle">
+                <div class="col-md-12">
+                    <h2>优秀摄影师</h2>
+                </div>
+            </div>
+            <div class="row text-center">
+                <% for(var p = 0;p < perList.length;p++){ var per = perList[p];%>
+                    <div class="col-md-2">
+                        <div class="storySingleBlock" id="<%=per.pname%>">
+                            <div>
+                                <img src="<%=per.portrait%>"
+                                     class="img-circle">
+                            </div>
+                            <h4><%=per.pname%></h4>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+        <br>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel">
+
+            <div class="modal-dialog" role="document">
+                <div class="login-wrap">
+                    <div class="login-html">
+                        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+                        <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+                        <div class="login-form">
+                            <div class="sign-in-htm">
+                                <div class="group">
+                                    <label for="user" class="label">Username</label>
+                                    <input id="usernameField_I" type="text" class="input">
+                                </div>
+                                <div class="group">
+                                    <label for="passwordField_I" class="label">Password</label>
+                                    <input id="passwordField_I" type="password" class="input" data-type="password">
+                                </div>
+                                <div class="group">
+                                    <input id="checkboxField" type="checkbox" class="check" checked>
+                                    <label for="checkboxField"><span class="icon"></span> Keep me Signed in</label>
+                                </div>
+                                <div class="group">
+                                    <input type="submit" class="button" value="Sign In" id="signInButton">
+                                </div>
+                                <div class="hr"></div>
+                                <div class="foot-lnk">
+                                    <label><a href="#forgot">Forgot Password?</a></label>
+                                </div>
+                            </div>
+                            <div class="sign-up-htm">
+                                <div class="group">
+                                    <label for="usernameField_U" class="label">Username</label>
+                                    <input id="usernameField_U" type="text" class="input">
+                                </div>
+                                <div class="group">
+                                    <label for="passwordField_U" class="label">Password</label>
+                                    <input id="passwordField_U" type="password" class="input" data-type="password">
+                                </div>
+                                <div class="group">
+                                    <label for="passwordConfirmField" class="label">Repeat Password</label>
+                                    <input id="passwordConfirmField" type="password" class="input" data-type="password">
+                                </div>
+                                <div class="group">
+                                    <label for="emailField" class="label">Email Address</label>
+                                    <input id="emailField" type="text" class="input">
+                                </div>
+                                <div class="group">
+                                    <input type="submit" class="button" value="Sign Up" id="signUpButton">
+                                </div>
+                                <div class="hr"></div>
+                                <div class="foot-lnk">
+                                    <label for="tab-1"><a>Already Member?</a></label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+<%- include("./hintDialog.ejs")%>
+</body>
+<script src="/javascripts/jQuery/jquery-3.2.1.min.js"></script>
+<script src="/stylesheets/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+<script src="/javascripts/hintDialogJS.js"></script>
+<script src="/javascripts/header.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".jumbotron").click(function (e) {
+            runIn("warning", "请先登录！");
+            setTimeout(runOut, 2000)
+        })
+        $(".myButton").click(function () {
+            if('<%=isLogined%>' === 'true'){
+                window.location.href = '/personalPage';
+            }
+        });
+        $(".imgUpFloat img").click(function (e) {
+            $(location).attr("href", ("/photographerPage?pname=" + $(e.target).attr("id")));
+        })
+        var urlRoot = "http://localhost:3000";
+        function signIn() {
+            var username = $("#usernameField_I").val();
+            var password = $("#passwordField_I").val();
+            if(username !== "" && username !== null && password !== "" && password !== null){
+                $.ajax({
+                    url: urlRoot + '/signIn',
+                    type:'POST', //POST
+                    async:true,    //或false,是否异步
+                    data:{
+                        username: username,
+                        password: password
+                    },
+                    dataType:'json',
+                    success:function(data){
+                        if(data.ret_code === 0){
+                            location.reload();
+                        }else if(data.ret_code === 1){
+                            alert("请输入正确的用户名或密码");
+//                            window.location.href = urlRoot + "/personalPage?username=" + username;
+                        }else{
+                            alert("session验证失败");
+                        }
+                    },
+                    error:function(xhr,textStatus){
+                        console.log('登录失败验证失败');
+                    }
+                })
+            }else{
+                alert("请输入正确的用户名或密码");
+            }
+
+        }
+        function signUp() {
+            var username = $("#usernameField_I").val();
+            var password = $("#passwordField_I").val();
+            var password_r = $("#passwordConfirmField").val();
+            var email = $("#emailField").val();
+        }
+
+        $("#signInButton").click(function (e) {
+            signIn();
+        })
+        $("#signUpButton").click(function (e) {
+            signUp();
+        })
+    });
+
+    $(".perListBlock .storySingleBlock").click(function (e) {
+        var pname = $(e.target).attr("id");
+        $(location).attr("href", ("/photographerPage?pname=" + pname));
+    })
+    $(".perListBlock .storySingleBlock img").click(function (e) {
+        e.stopPropagation();
+        var pname = $(e.target).parent().parent().attr("id");
+        $(location).attr("href", ("/photographerPage?pname=" + pname));
+    })
+
+</script>
+</html>
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+  <!--<head>-->
+    <!--<title></title>-->
+    <!--<link rel='stylesheet' href='/stylesheets/style.css' />-->
+  <!--</head>-->
+  <!--<body>-->
+    <!--<h1></h1>-->
+    <!--<p>Welcome to</p>-->
+  <!--</body>-->
+<!--</html>-->

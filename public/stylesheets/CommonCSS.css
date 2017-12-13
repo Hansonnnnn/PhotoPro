@@ -1,0 +1,233 @@
+/*body{*/
+    /*padding-top: 70px;*/
+    /*background-color: white;*/
+    /*position: relative;*/
+/*}*/
+
+
+/*!*导航栏样式表*!*/
+/*.myButton{*/
+    /*margin-left: 710px;*/
+/*}*/
+/*!*affix*!*/
+/*nav li>a, #backToLocator{*/
+    /*border-left: 3px solid #337ab7;*/
+/*}*/
+
+/*!*返回顶部位置的坐标位置*!*/
+
+/*#backToLocator{*/
+    /*position: relative;*/
+    /*display: block;*/
+    /*padding: 10px 15px;*/
+/*}*/
+/*#backToLocator:hover{*/
+    /*background-color: #EEEEEE;*/
+    /*text-decoration: none;*/
+/*}*/
+
+/*!*头像通用样式*!*/
+/*.portraitBlock{*/
+    /*background-position: center;*/
+    /*background-size: cover;*/
+    /*border-radius: 6px;*/
+/*}*/
+
+/*!*故事板块卡片样式*!*/
+/*.storySingleBlock{*/
+    /*margin: 15px 0;*/
+    /*padding: 10px;*/
+    /*background-color: #FFFFFF;*/
+    /*border-radius: 6px;*/
+    /*border: 1px solid #EEEEEE;*/
+/*}*/
+/*.storySingleBlock:hover{*/
+    /*cursor: pointer;*/
+    /*box-shadow: 2px 2px 5px #888888;*/
+/*}*/
+
+/*.storySingleBlock .imgBlock{*/
+    /*border-radius: 6px;*/
+    /*background-size: cover;*/
+/*}*/
+
+
+body{
+    padding-top: 60px;
+    background-color: white;
+    position: relative;
+    outline: none;
+}
+
+
+/*导航栏样式表*/
+.myButton{
+    margin-left: 710px;
+}
+/*affix*/
+nav li>a, #backToLocator{
+    border-left: 3px solid #337ab7;
+}
+
+/*返回顶部位置的坐标位置*/
+
+#backToLocator{
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+#backToLocator:hover{
+    background-color: #EEEEEE;
+    text-decoration: none;
+}
+
+/*头像通用样式*/
+.smallPortraitBlock{
+    width: 40px;
+    height: 40px;
+    border: 2px solid #dedede;
+    border-radius: 6px;
+}
+.portraitBlock{
+    width: 60px;
+    height: 60px;
+    border: 2px solid #dedede;
+    margin-right: 20px;
+    border-radius: 6px;
+}
+
+/*故事板块卡片样式*/
+.storySingleBlock{
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    border: 1px solid #EEEEEE;
+}
+.storySingleBlock:hover{
+    cursor: pointer;
+    box-shadow: 2px 2px 5px #888888;
+}
+
+.storySingleBlock .imgBlock{
+    border-radius: 6px;
+    background-size: cover;
+}
+
+
+
+/*个人中心、搜索结果页块样式*/
+.bigBlock{
+    border: 1px solid #EEEEEE;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 6px;
+}
+.bigBlock h4{
+    color: #696969;
+}
+.bigBlock .innerBigBlock{
+    margin-top: 70px;
+}
+
+/*分割线样式*/
+.hr {
+    height: 2px;
+    margin: 30px 0 20px 0;
+    background: rgba(255, 255, 255, .2);
+}
+.bigBlock .hr{
+    height:2px;
+    margin:10px 0 20px 0;
+    background:rgba(232,232,232,.9);
+}
+
+
+/*个人中心列表块样式*/
+.listBlock{
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #d5d5d5;
+    border-radius: 6px;
+}
+.listBlock .centerBlock{
+    margin-top: 20px;
+}
+.listBlock .buttonBlock{
+    margin-top: 20px;
+}
+
+
+/*个人中心样式*/
+.personalCenterMainBlock .leftBlock{
+    border: 1px solid #e8e8e8;
+    padding: 20px;
+}
+.personalCenterMainBlock .rightBlock{
+    padding-left: 40px;
+}
+/*.portraitBlock{*/
+/*width: 40px;*/
+/*height: 40px;*/
+/*border: 2px solid #dedede;*/
+/*}*/
+
+.stateTitle{
+    text-decoration: underline;
+}
+#waited .stateTitle{
+    color: #337ab7;
+}
+#ing .stateTitle{
+    color: #c74b57;
+}
+#finished .stateTitle{
+    color: #f0ad4e;
+}
+#refused .stateTitle{
+    color: #d9534f;
+}
+/*故事板块*/
+.storySingleBlock .imgBlock{
+    width: 175px;
+    height: 175px;
+
+}
+
+
+/*星星好评的颜色*/
+.redStar{
+    color: #E5322E;
+}
+
+.hintDialog{
+    width: 300px;
+    border: 2px solid #e1e1e8;
+    border-radius: 6px;
+    height: 100px;
+    position: absolute;
+    z-index: 9999;
+    top: 70px;
+    left: -320px;
+    background-color: white;
+    box-shadow: 0 0  3px 3px #e8e8e8;
+}
+.hintDialog img{
+    width: 90px;
+    height: 90px;
+    margin-top: 3px;
+}
+
+.hintDialog h3{
+    padding-top: 15px;
+    padding-left: 20px;
+    color: #888888;
+}
+.runIn{
+    -webkit-transition: transform 0.5s;
+    -webkit-transform: translateX(350px);
+}
+.runOut{
+    -webkit-transition: transform 1s;
+    -webkit-transform: translateX(-350px);
+}

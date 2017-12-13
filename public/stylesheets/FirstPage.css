@@ -1,0 +1,97 @@
+body{
+    padding-top: 60px;
+}
+.fr-btn{
+    margin-left: 82.9%;
+    margin-bottom: 5px;
+}
+.jumbotron{
+    padding-bottom: 46px;
+    margin-bottom: 0;
+}
+
+/*.firstBlock{*/
+    /*!*padding-left: 30px;*!*/
+    /*padding-right: 5px;*/
+/*}*/
+
+.imgUpFloat{
+    margin-top: -50px;
+}
+.carouselMar{
+    margin: 10px;
+}
+.nav-search-input-width{
+    width: 300px;
+}
+
+
+
+
+
+
+.myCenter{
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container-fluid .jumbotron{
+    border-radius: 0;
+    background-color: #E5322E;
+}
+.container-fluid .jumbotron *{
+    color: white;
+}
+.secondBlock{
+    margin: 25px 10px;
+    box-shadow: 1px 1px 10px 3px #e8e8e8;
+}
+.secondBlock:hover{
+    box-shadow: 3px 3px 12px 5px #EEEEEE;
+}
+.myCenter{
+    margin: 0 20px 0 20px;
+}
+.funcIntro{
+    padding: 30px 10px;
+    border: 1px solid #EEEEEE;
+    /*box-shadow: 0 0 5px 3px #e8e8e8;*/
+}
+.imgUpFloat{
+    margin-top: -50px;
+}
+.imgUpFloat .img-circle{
+    padding: 1px;
+    border: 2px solid #ccccd6;
+    cursor: pointer;
+}
+.perListBlock{
+    background-color: #fbfbfb;
+    padding: 20px 30px 40px 30px;
+    color: #3c3c3c;
+}
+.perListBlock .childTitle{
+    margin: 20px 20px 20px 0;
+    color: #3c3c3c;
+}
+.perListBlock img{
+    width: 90px;
+    height: 90px;
+    padding: 2px;
+    border: 2px solid #c8c5ca;
+}
+.storySingleBlock{
+    margin: 15px 0;
+    padding: 30px 10px ;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid #c8c5ca;
+    box-shadow: 1px 1px 10px 3px #e8e8e8;
+}
+.storySingleBlock:hover{
+    cursor: pointer;
+    box-shadow: 2px 2px 5px #888888;
+}
+

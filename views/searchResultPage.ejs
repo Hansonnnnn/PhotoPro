@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索结果</title>
+    <link href="/stylesheets/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/LoginPageCSS.css" rel="stylesheet">
+    <link href="/stylesheets/CommonCSS.css" rel="stylesheet">
+    <style type="text/css">
+        .portraitBlock{
+            width: 60px;
+            height: 60px;
+            border: 2px solid #dedede;
+            margin-right: 20px;
+            border-radius: 6px;
+        }
+        /*故事板块*/
+        .storySingleBlock .imgBlock{
+            width: 208px;
+            height: 208px;
+
+        }
+        .listBlock .buttonBlock{
+            margin-top: 15px;
+            /*padding-left: 50px;*/
+        }
+        .listBlock .buttonBlock button{
+            margin-left: 55px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <%- include("./header.ejs")%>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <% if(contentIsNull){ %>
+            <div class="row bigBlock">
+                <div class="col-md-12">
+                    <h4>推荐摄影师</h4>
+                </div>
+                <div class="hr col-md-12"></div>
+                <div class="innerBigBlock">
+                    <% for(var i = 0; i < perList.length; i++){ var per = perList[i];%>
+                    <div class="row listBlock">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-1 portraitBlock">
+                                    <img src="<%=per.portrait%>" width="58px" height="58px" style="margin-left: -16px; padding: 1px 2px 3px; border-radius: 6px">
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="row">
+                                        <h4><%=per.pname%></h4>
+                                        <% for(var j = 0; j < per.stars; j++){ %>
+                                        <span class="glyphicon glyphicon-star redStar"></span>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-md-offset-5 buttonBlock">
+                                    <div class="row text-center">
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-primary goToMainPageButton">查看主页</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-danger searchFollowButton">+ 关注</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+            <div class="row bigBlock">
+                <div class="col-md-12">
+                    <h4>推荐故事集</h4>
+                </div>
+                <div class="hr col-md-12"></div>
+                <div class="innerBigBlock">
+                    <div class="row listBlock">
+                        <% for(var k = 0; k < storyList.length; k++){ var story = storyList[k];%>
+                        <div class="col-md-4">
+                            <div class="storySingleBlock">
+                                <div class="imgBlock" style="background-image: url(<%=story.mainImage%>) "></div>
+                                <h4 class="text-center"><%=story.title%></h4>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+            <% }else{ %>
+            <!--输出的查询条件不为空，就要显示查询结果为空，并且显示推荐列表-->
+                <!--摄影师结果为空-->
+                <% if(perListIsEmpty){ %>
+                    <div class="row bigBlock">
+                        <div class="col-md-12">
+                            <h4>摄影师搜索结果</h4>
+                        </div>
+                        <div class="hr col-md-12"></div>
+                        <div class="innerBigBlock">
+                            <div class="row listBlock">
+                                <h4>无匹配结果</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!--故事集结果为空-->
+                    <% if(storyListIsEmpty){ %>
+                    <div class="row bigBlock">
+                        <div class="col-md-12">
+                            <h4>故事集搜索结果</h4>
+                        </div>
+                        <div class="hr col-md-12"></div>
+                        <div class="innerBigBlock">
+                            <div class="row listBlock">
+                                <h4>无匹配结果</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row bigBlock">
+                <div class="col-md-12">
+                    <h4>推荐摄影师</h4>
+                </div>
+                <div class="hr col-md-12"></div>
+                <div class="innerBigBlock">
+                    <% for(var i = 0; i < perList.length; i++){ var per = perList[i];%>
+                    <div class="row listBlock">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-1 portraitBlock">
+                                    <img src="<%=per.portrait%>" width="58px" height="58px" style="margin-left: -16px; padding: 1px 2px 3px; border-radius: 6px">
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="row">
+                                        <h4><%=per.pname%></h4>
+                                        <% for(var j = 0; j < per.stars; j++){ %>
+                                        <span class="glyphicon glyphicon-star redStar"></span>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-md-offset-5 buttonBlock">
+                                    <div class="row text-center">
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-primary goToMainPageButton">查看主页</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-danger searchFollowButton">+ 关注</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+                    <div class="row bigBlock">
+                <div class="col-md-12">
+                    <h4>推荐故事集</h4>
+                </div>
+                <div class="hr col-md-12"></div>
+                <div class="innerBigBlock">
+                    <div class="row listBlock">
+                        <% for(var k = 0; k < storyList.length; k++){ var story = storyList[k];%>
+                        <div class="col-md-4">
+                            <div class="storySingleBlock">
+                                <div class="imgBlock" style="background-image: url(<%=story.mainImage%>) "></div>
+                                <h4 class="text-center"><%=story.title%></h4>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+                    <!--故事集结果不为空-->
+                    <% }else{ %>
+                    <!--这是搜索到的结果-->
+                    <div class="row bigBlock">
+                <div class="col-md-12">
+                    <h4>故事集搜索结果</h4>
+                </div>
+                <div class="hr col-md-12"></div>
+                <div class="innerBigBlock">
+                    <div class="row listBlock">
+                        <% for(var k = 0; k < storyList.length; k++){ var story = storyList[k];%>
+                        <div class="col-md-4">
+                            <div class="storySingleBlock">
+                                <div class="imgBlock" style="background-image: url(<%=story.mainImage%>) "></div>
+                                <h4 class="text-center"><%=story.title%></h4>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+                    <!--这是推荐的摄影师列表-->
+                    <div class="row bigBlock">
+                <div class="col-md-12">
+                    <h4>推荐摄影师</h4>
+                </div>
+                <div class="hr col-md-12"></div>
+                <div class="innerBigBlock">
+                    <% for(var i = 0; i < perList.length; i++){ var per = perList[i];%>
+                    <div class="row listBlock">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-1 portraitBlock">
+                                    <img src="<%=per.portrait%>" width="58px" height="58px" style="margin-left: -16px; padding: 1px 2px 3px; border-radius: 6px">
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="row">
+                                        <h4><%=per.pname%></h4>
+                                        <% for(var j = 0; j < per.stars; j++){ %>
+                                        <span class="glyphicon glyphicon-star redStar"></span>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-md-offset-5 buttonBlock">
+                                    <div class="row text-center">
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-primary goToMainPageButton">查看主页</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-danger searchFollowButton">+ 关注</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+                    <% } %>
+                <!--摄影师结果不为空-->
+                <% }else{ %>
+                    <!--摄影师搜索结果-->
+                    <div class="row bigBlock">
+                <div class="col-md-12">
+                    <h4>摄影师搜索结果</h4>
+                </div>
+                <div class="hr col-md-12"></div>
+                <div class="innerBigBlock">
+                    <% for(var i = 0; i < perList.length; i++){ var per = perList[i];%>
+                    <div class="row listBlock">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-1 portraitBlock">
+                                    <img src="<%=per.portrait%>" width="58px" height="58px" style="margin-left: -16px; padding: 1px 2px 3px; border-radius: 6px">
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="row">
+                                        <h4><%=per.pname%></h4>
+                                        <% for(var j = 0; j < per.stars; j++){ %>
+                                        <span class="glyphicon glyphicon-star redStar"></span>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-md-offset-5 buttonBlock">
+                                    <div class="row text-center">
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-primary goToMainPageButton">查看主页</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <button type="button" class="btn btn-danger searchFollowButton">+ 关注</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+                    <!--故事集结果为空-->
+                    <% if(storyListIsEmpty){ %>
+                    <div class="row bigBlock">
+                        <div class="col-md-12">
+                            <h4>故事集搜索结果</h4>
+                        </div>
+                        <div class="hr col-md-12"></div>
+                        <div class="innerBigBlock">
+                            <div class="row listBlock">
+                                <h4>无匹配结果</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row bigBlock">
+                        <div class="col-md-12">
+                            <h4>推荐摄影师</h4>
+                        </div>
+                        <div class="hr col-md-12"></div>
+                        <div class="innerBigBlock">
+                            <% for(var i = 0; i < perList.length; i++){ var per = perList[i];%>
+                            <div class="row listBlock">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-1 portraitBlock">
+                                            <img src="<%=per.portrait%>" width="58px" height="58px" style="margin-left: -16px; padding: 1px 2px 3px; border-radius: 6px">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="row">
+                                                <h4><%=per.pname%></h4>
+                                                <% for(var j = 0; j < per.stars; j++){ %>
+                                                <span class="glyphicon glyphicon-star redStar"></span>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-md-offset-5 buttonBlock">
+                                            <div class="row text-center">
+                                                <div class="col-md-6">
+                                                    <button type="button" class="btn btn-primary goToMainPageButton">查看主页</button>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button type="button" class="btn btn-danger searchFollowButton">+ 关注</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="row bigBlock">
+                        <div class="col-md-12">
+                            <h4>推荐故事集</h4>
+                        </div>
+                        <div class="hr col-md-12"></div>
+                        <div class="innerBigBlock">
+                            <div class="row listBlock">
+                                <% for(var k = 0; k < storyList.length; k++){ var story = storyList[k];%>
+                                <div class="col-md-4">
+                                    <div class="storySingleBlock">
+                                        <div class="imgBlock" style="background-image: url(<%=story.mainImage%>) "></div>
+                                        <h4 class="text-center"><%=story.title%></h4>
+                                    </div>
+                                </div>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                    <!--故事集结果不为空-->
+                    <% }else{ %>
+                    <!--这是搜索到的结果-->
+                    <div class="row bigBlock">
+                        <div class="col-md-12">
+                            <h4>故事集搜索结果</h4>
+                        </div>
+                        <div class="hr col-md-12"></div>
+                        <div class="innerBigBlock">
+                            <div class="row listBlock">
+                                <% for(var k = 0; k < storyList.length; k++){ var story = storyList[k];%>
+                                <div class="col-md-4">
+                                    <div class="storySingleBlock">
+                                        <div class="imgBlock" style="background-image: url(<%=story.mainImage%>) "></div>
+                                        <h4 class="text-center"><%=story.title%></h4>
+                                    </div>
+                                </div>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                    <!--这是推荐的摄影师列表-->
+                    <div class="row bigBlock">
+                        <div class="col-md-12">
+                            <h4>推荐摄影师</h4>
+                        </div>
+                        <div class="hr col-md-12"></div>
+                        <div class="innerBigBlock">
+                            <% for(var i = 0; i < perList.length; i++){ var per = perList[i];%>
+                            <div class="row listBlock">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-1 portraitBlock">
+                                            <img src="<%=per.portrait%>" width="58px" height="58px" style="margin-left: -16px; padding: 1px 2px 3px; border-radius: 6px">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="row">
+                                                <h4><%=per.pname%></h4>
+                                                <% for(var j = 0; j < per.stars; j++){ %>
+                                                <span class="glyphicon glyphicon-star redStar"></span>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 col-md-offset-5 buttonBlock">
+                                            <div class="row text-center">
+                                                <div class="col-md-6">
+                                                    <button type="button" class="btn btn-primary goToMainPageButton">查看主页</button>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <button type="button" class="btn btn-danger searchFollowButton">+ 关注</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                        </div>
+                    </div>
+                    <% } %>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/javascripts/jQuery/jquery-3.2.1.min.js"></script>
+<script src="/stylesheets/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(".goToMainPageButton").click(function (e) {
+        console.log($($(e.target).parent().parent().parent().parent().find("h4")).text());
+        var pname = $($(e.target).parent().parent().parent().parent().find("h4")).text();
+        $(location).attr("href", ("/photographerPage?pname=" + pname));
+    });
+
+</script>
+</html>

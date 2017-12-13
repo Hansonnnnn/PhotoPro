@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>摄影师个人中心</title>
+    <link href="/stylesheets/lib/bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/LoginPageCSS.css" rel="stylesheet">
+    <link href="/stylesheets/CommonCSS.css" rel="stylesheet">
+    <style type="text/css">
+        .defaultInfoBlock{
+            margin: -15px 0 15px 0;
+        }
+        .defaultInfoBlock h4{
+            margin-top: 25px;
+        }
+        #backLocationHelper_info, #backLocationHelper_defaultInfo, #backLocationHelper_requestList, #backLocationHelper_followersList, #backLocationHelper_storyList{
+            position: absolute;
+            margin-top: -70px;
+            width: 100%;
+            height: 50px;
+        }
+        #followersListBlock .portraitBlock{
+            margin-left: 5px;
+        }
+        #followersListBlock .listBlock .buttonBlock{
+            margin-top: 15px;
+        }
+        #followersListBlock .buttonBlock .followButton{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <%- include("./header.ejs")%>
+    <div class="row personalCenterMainBlock">
+        <div class="col-md-10 col-md-offset-1">
+            <!--左侧部分-->
+            <div class="col-md-3">
+                <div class="row text-center leftBlock">
+                    <img src="https://cn-ali.muscache.com/im/pictures/user/b9b0d932-82a4-491f-b366-d08b38af2e02.jpg?aki_policy=profile_x_medium">
+                    <div class="hr"></div>
+                    <h4>杨峰工作室</h4>
+                    <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span>修改头像</button>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 scrollspy" role="complementary">
+                        <!--data-offset-bottom="300"-->
+                        <nav class="affix-top" data-spy="affix"  data-offset-top="220" >
+                            <ul class="nav hidden-xs hidden-sm">
+                                <li><a href="#backLocationHelper_info">我的个人资料</a></li>
+                                <li><a href="#backLocationHelper_defaultInfo">主页信息统计</a></li>
+                                <li><a href="#backLocationHelper_requestList">我的邀约YaoYue请求</a></li>
+                                <li><a href="#backLocationHelper_followersList">我关注的摄影师</a></li>
+                                <li><a href="#backLocationHelper_storyList">我收藏的故事</a></li>
+                            </ul>
+                            <a id="backToLocator" href="#backLocationHelper_info">返回顶部</a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!--又侧部分-->
+            <div class="col-md-9 rightBlock">
+                <!--个人资料-->
+                <div id="backLocationHelper_info"></div>
+                <div class="row bigBlock" id="infoBlock">
+                    <div class="col-md-12">
+                        <h4>我的个人资料</h4>
+                    </div>
+                    <div class="hr col-md-12"></div>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="nameField">工作室名称</label>
+                            <div class="col-md-10">
+                                <input id="nameField" type="text" class="form-control" placeholder="杨峰工作室">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="startUpTimeField">成立时间</label>
+                            <div class="col-md-10">
+                                <input id="startUpTimeField" type="text" class="form-control" placeholder="2010年11月8日">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="locationField">所在地</label>
+                            <div class="col-md-10">
+                                <input id="locationField" type="text" class="form-control" placeholder="中国-江苏省-南京市-鼓楼区">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="memberNameField">工作室成员</label>
+                            <div class="col-md-10">
+                                <input id="memberNameField" type="text" class="form-control" placeholder="杨峰">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="memberIntroField">成员介绍</label>
+                            <div class="col-md-10">
+                                <input id="memberIntroField" type="text" class="form-control" placeholder="专业级摄影师，曾就职于专业摄影学院，拍摄大型纪录片以及专业人像摄影招聘，拥有丰富拍照摄影经验；">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="sloganField">Slogan</label>
+                            <div class="col-md-10">
+                                <input id="sloganField" type="text" class="form-control" placeholder="瞬间，转瞬即逝，而我们，希望帮您留住瞬间，使其永恒。">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label" for="styleField">拍摄风格</label>
+                            <div class="col-md-10">
+                                <input id="styleField" type="text" class="form-control" placeholder="温暖、安详、静谧、细节">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="btn btn-primary">保存</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!--注册信息-->
+                <div id="backLocationHelper_defaultInfo"></div>
+                <div class="row bigBlock" id="defaultInfoBlock">
+                    <div class="col-md-12">
+                        <h4>主页统计信息</h4>
+                    </div>
+                    <div class="hr col-md-12"></div>
+                    <div class="col-md-12 defaultInfoBlock">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <h3><span class="label label-primary">入驻时间</span></h3>
+                            </div>
+                            <div class="col-md-10">
+                                <h4>2017年11月10日</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <h3><span class="label label-success">好评度</span></h3>
+                            </div>
+                            <div class="col-md-10">
+                                <h4>98%</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <h3><span class="label label-warning">被邀约次数</span></h3>
+                            </div>
+                            <div class="col-md-10">
+                                <h4>101次</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <h3><span class="label label-danger">收录作品数</span></h3>
+                            </div>
+                            <div class="col-md-10">
+                                <h4>1000+</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="backLocationHelper_requestList"></div>
+                <!--邀约请求列表-->
+                <div class="row bigBlock" id="requestsListBlock">
+                    <div class="col-md-12">
+                        <h4>我的邀约YaoYue请求</h4>
+                    </div>
+                    <div class="hr col-md-12"></div>
+                    <div>
+                        <ul class="nav nav-tabs" role="tablist" id="requestTab">
+                            <li role="presentation" class="active"><a href="#waited" aria-controls="waited" role="tab" data-toggle="tab">待确认的YaoYue</a></li>
+                            <li role="presentation"><a href="#ing" aria-controls="ing" role="tab" data-toggle="tab">进行中的YaoYue</a></li>
+                            <li role="presentation"><a href="#finished" aria-controls="finished" role="tab" data-toggle="tab">已完成的YaoYue</a></li>
+                            <li role="presentation"><a href="#refused" aria-controls="refused" role="tab" data-toggle="tab">被拒绝的YaoYue</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active " id="waited">
+                                <div class="row listBlock">
+                                    <div class="col-md-12">
+                                        <div class="row topBlock">
+                                            <div class="col-md-1">
+                                                <div class="smallPortraitBlock" style="background-image: url(https://cn-ali.muscache.com/im/users/754749/profile_pic/1408977336/original.jpg?aki_policy=profile_small);"></div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-link">查看详细邀约YaoYue信息</button>
+                                            </div>
+                                            <div class="col-md-offset-7 col-md-2">
+                                                <h4 class="stateTitle">待确认</h4>
+                                            </div>
+                                        </div>
+                                        <div class="hr"></div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue发起时间：</span></div>
+                                            <div class="col-md-3"><span>2017年11月11日</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">邀约的摄影师:</span></div>
+                                            <div class="col-md-3"><span>北影工作室</span></div>
+                                        </div>
+                                        <div class="row buttonBlock">
+                                            <div class="col-md-offset-3 col-md-3">
+                                                <button type="button" class="btn btn-primary">发送确认提醒</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row listBlock">
+                                    <div class="col-md-12">
+                                        <div class="row topBlock">
+                                            <div class="col-md-1">
+                                                <div class="smallPortraitBlock" style="background-image: url(https://cn-ali.muscache.com/im/users/754749/profile_pic/1408977336/original.jpg?aki_policy=profile_small);"></div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-link">查看详细邀约YaoYue信息</button>
+                                            </div>
+                                            <div class="col-md-offset-7 col-md-2">
+                                                <h4 class="stateTitle">待确认</h4>
+                                            </div>
+                                        </div>
+                                        <div class="hr"></div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue发起时间：</span></div>
+                                            <div class="col-md-3"><span>2017年11月11日</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">邀约的摄影师:</span></div>
+                                            <div class="col-md-3"><span>北影工作室</span></div>
+                                        </div>
+                                        <div class="row buttonBlock">
+                                            <div class="col-md-offset-3 col-md-3">
+                                                <button type="button" class="btn btn-primary">发送确认提醒</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row listBlock">
+                                    <div class="col-md-12">
+                                        <div class="row topBlock">
+                                            <div class="col-md-1">
+                                                <div class="smallPortraitBlock" style="background-image: url(https://cn-ali.muscache.com/im/users/754749/profile_pic/1408977336/original.jpg?aki_policy=profile_small);"></div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-link">查看详细邀约YaoYue信息</button>
+                                            </div>
+                                            <div class="col-md-offset-7 col-md-2">
+                                                <h4 class="stateTitle">待确认</h4>
+                                            </div>
+                                        </div>
+                                        <div class="hr"></div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue发起时间：</span></div>
+                                            <div class="col-md-3"><span>2017年11月11日</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">邀约的摄影师:</span></div>
+                                            <div class="col-md-3"><span>北影工作室</span></div>
+                                        </div>
+                                        <div class="row buttonBlock">
+                                            <div class="col-md-offset-3 col-md-3">
+                                                <button type="button" class="btn btn-primary">发送确认提醒</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="ing">
+                                <div class="row listBlock">
+                                    <div class="col-md-12">
+                                        <div class="row topBlock">
+                                            <div class="col-md-1">
+                                                <div class="smallPortraitBlock" style="background-image: url(https://cn-ali.muscache.com/im/users/754749/profile_pic/1408977336/original.jpg?aki_policy=profile_small);"></div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-link">查看详细邀约YaoYue信息</button>
+                                            </div>
+                                            <div class="col-md-offset-7 col-md-2">
+                                                <h4 class="stateTitle">进行中</h4>
+                                            </div>
+                                        </div>
+                                        <div class="hr"></div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue发起时间：</span></div>
+                                            <div class="col-md-3"><span>2017年11月11日</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue确认时间：</span></div>
+                                            <div class="col-md-3"><span>2017年11月12日</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">邀约的摄影师:</span></div>
+                                            <div class="col-md-3"><span>北影工作室</span></div>
+                                        </div>
+                                        <div class="row buttonBlock">
+                                            <div class="col-md-offset-3 col-md-3">
+                                                <button type="button" class="btn btn-danger">确认本次YaoYue结束</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="finished">
+                                <div class="row listBlock">
+                                    <div class="col-md-12">
+                                        <div class="row topBlock">
+                                            <div class="col-md-1">
+                                                <div class="smallPortraitBlock" style="background-image: url(https://cn-ali.muscache.com/im/users/754749/profile_pic/1408977336/original.jpg?aki_policy=profile_small);"></div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-link">查看详细邀约YaoYue信息</button>
+                                            </div>
+                                            <div class="col-md-offset-7 col-md-2">
+                                                <h4 class="stateTitle">待评价</h4>
+                                            </div>
+                                        </div>
+                                        <div class="hr"></div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue结束时间：</span></div>
+                                            <div class="col-md-3"><span>2017年11月12日</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">邀约的摄影师:</span></div>
+                                            <div class="col-md-3"><span>北影工作室</span></div>
+                                        </div>
+                                        <div class="row buttonBlock">
+                                            <div class="col-md-offset-3 col-md-3">
+                                                <button type="button" class="btn btn-warning">为本次YaoYue写下故事</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row listBlock">
+                                    <div class="col-md-12">
+                                        <div class="row topBlock">
+                                            <div class="col-md-1">
+                                                <div class="smallPortraitBlock" style="background-image: url(https://cn-ali.muscache.com/im/users/754749/profile_pic/1408977336/original.jpg?aki_policy=profile_small);"></div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-link">查看详细邀约YaoYue信息</button>
+                                            </div>
+                                            <div class="col-md-offset-7 col-md-2">
+                                                <h4 class="stateTitle">待评价</h4>
+                                            </div>
+                                        </div>
+                                        <div class="hr"></div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue结束时间：</span></div>
+                                            <div class="col-md-3"><span>2017年11月12日</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">邀约的摄影师:</span></div>
+                                            <div class="col-md-3"><span>北影工作室</span></div>
+                                        </div>
+                                        <div class="row buttonBlock">
+                                            <div class="col-md-offset-3 col-md-3">
+                                                <button type="button" class="btn btn-warning">为本次YaoYue写下故事</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row listBlock">
+                                    <div class="col-md-12">
+                                        <div class="row topBlock">
+                                            <div class="col-md-1">
+                                                <div class="smallPortraitBlock" style="background-image: url(https://cn-ali.muscache.com/im/users/754749/profile_pic/1408977336/original.jpg?aki_policy=profile_small);"></div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-link">查看详细邀约YaoYue信息</button>
+                                            </div>
+                                            <div class="col-md-offset-7 col-md-2">
+                                                <h4 class="stateTitle">待评价</h4>
+                                            </div>
+                                        </div>
+                                        <div class="hr"></div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue结束时间：</span></div>
+                                            <div class="col-md-3"><span>2017年11月12日</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">邀约的摄影师:</span></div>
+                                            <div class="col-md-3"><span>北影工作室</span></div>
+                                        </div>
+                                        <div class="row buttonBlock">
+                                            <div class="col-md-offset-3 col-md-3">
+                                                <button type="button" class="btn btn-warning">为本次YaoYue写下故事</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="refused">
+                                <div class="row listBlock">
+                                    <div class="col-md-12">
+                                        <div class="row topBlock">
+                                            <div class="col-md-1">
+                                                <div class="smallPortraitBlock" style="background-image: url(https://cn-ali.muscache.com/im/users/754749/profile_pic/1408977336/original.jpg?aki_policy=profile_small);"></div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-link">查看详细邀约YaoYue信息</button>
+                                            </div>
+                                            <div class="col-md-offset-7 col-md-2">
+                                                <h4 class="stateTitle">被拒绝</h4>
+                                            </div>
+                                        </div>
+                                        <div class="hr"></div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue发起时间：</span></div>
+                                            <div class="col-md-9"><span>2017年11月12日</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">邀约的摄影师:</span></div>
+                                            <div class="col-md-9"><span>北影工作室</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue被拒绝时间:</span></div>
+                                            <div class="col-md-9"><span>北影工作室</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue被拒绝理由:</span></div>
+                                            <div class="col-md-9"><span>价格问题，你给的价格不太合适非常抱歉。---来自北影工作室</span></div>
+                                        </div>
+                                        <div class="row buttonBlock">
+                                            <div class="col-md-offset-3 col-md-3">
+                                                <button type="button" class="btn btn-danger">重新发起YaoYue</button>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <button type="button" class="btn btn-default">取消本次YaoYue</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row listBlock">
+                                    <div class="col-md-12">
+                                        <div class="row topBlock">
+                                            <div class="col-md-1">
+                                                <div class="smallPortraitBlock" style="background-image: url(https://cn-ali.muscache.com/im/users/754749/profile_pic/1408977336/original.jpg?aki_policy=profile_small);"></div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-link">查看详细邀约YaoYue信息</button>
+                                            </div>
+                                            <div class="col-md-offset-7 col-md-2">
+                                                <h4 class="stateTitle">被拒绝</h4>
+                                            </div>
+                                        </div>
+                                        <div class="hr"></div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue发起时间：</span></div>
+                                            <div class="col-md-9"><span>2017年11月12日</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">邀约的摄影师:</span></div>
+                                            <div class="col-md-9"><span>北影工作室</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue被拒绝时间:</span></div>
+                                            <div class="col-md-9"><span>北影工作室</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue被拒绝理由:</span></div>
+                                            <div class="col-md-9"><span>价格问题，你给的价格不太合适非常抱歉。---来自北影工作室</span></div>
+                                        </div>
+                                        <div class="row buttonBlock">
+                                            <div class="col-md-offset-3 col-md-3">
+                                                <button type="button" class="btn btn-danger">重新发起YaoYue</button>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <button type="button" class="btn btn-default">取消本次YaoYue</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row listBlock">
+                                    <div class="col-md-12">
+                                        <div class="row topBlock">
+                                            <div class="col-md-1">
+                                                <div class="smallPortraitBlock" style="background-image: url(https://cn-ali.muscache.com/im/users/754749/profile_pic/1408977336/original.jpg?aki_policy=profile_small);"></div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn btn-link">查看详细邀约YaoYue信息</button>
+                                            </div>
+                                            <div class="col-md-offset-7 col-md-2">
+                                                <h4 class="stateTitle">被拒绝</h4>
+                                            </div>
+                                        </div>
+                                        <div class="hr"></div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue发起时间：</span></div>
+                                            <div class="col-md-9"><span>2017年11月12日</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">邀约的摄影师:</span></div>
+                                            <div class="col-md-9"><span>北影工作室</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue被拒绝时间:</span></div>
+                                            <div class="col-md-9"><span>北影工作室</span></div>
+                                        </div>
+                                        <div class="row centerBlock">
+                                            <div class="col-md-3"><span class="h5">YaoYue被拒绝理由:</span></div>
+                                            <div class="col-md-9"><span>价格问题，你给的价格不太合适非常抱歉。---来自北影工作室</span></div>
+                                        </div>
+                                        <div class="row buttonBlock">
+                                            <div class="col-md-offset-3 col-md-3">
+                                                <button type="button" class="btn btn-danger">重新发起YaoYue</button>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <button type="button" class="btn btn-default">取消本次YaoYue</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="backLocationHelper_followersList"></div>
+                <!--关注的摄影师-->
+                <div class="row bigBlock" id="followersListBlock">
+                    <div class="col-md-12">
+                        <h4>我关注的摄影师</h4>
+                    </div>
+                    <div class="hr col-md-12"></div>
+                    <div class="innerBigBlock">
+                        <div class="row listBlock">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-1 portraitBlock"
+                                         style="background-image: url(https://cn-ali.muscache.com/im/users/754749/profile_pic/1408977336/original.jpg?aki_policy=profile_small)"></div>
+                                    <div class="col-md-2">
+                                        <div class="row">
+                                            <h4>杨峰工作室</h4>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-md-offset-5 buttonBlock">
+                                        <div class="row text-center">
+                                            <div class="col-md-6">
+                                                <button type="button" class="btn btn-primary">查看主页</button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="button" class="btn btn-default followButton">取消关注</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row listBlock">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-1 portraitBlock"
+                                         style="background-image: url(https://cn-ali.muscache.com/im/users/754749/profile_pic/1408977336/original.jpg?aki_policy=profile_small)"></div>
+                                    <div class="col-md-2">
+                                        <div class="row">
+                                            <h4>杨峰工作室</h4>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                            <span class="glyphicon glyphicon-star"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-md-offset-5 buttonBlock">
+                                        <div class="row text-center">
+                                            <div class="col-md-6">
+                                                <button type="button" class="btn btn-primary">查看主页</button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="button" class="btn btn-default followButton">取消关注</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="backLocationHelper_storyList"></div>
+                <!--收藏的故事-->
+                <div class="row bigBlock" id="storyListBlock">
+                    <div class="col-md-12">
+                        <h4>我收藏的故事Story</h4>
+                    </div>
+                    <div class="hr col-md-12"></div>
+                    <div class="innerBigBlock">
+                        <div class="row listBlock">
+                            <div class="col-md-4">
+                                <div class="storySingleBlock">
+                                    <div class="imgBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/6379b746-253e-4e68-a4a1-ba5dc98f73ca.jpg?aki_policy=large) "></div>
+                                    <h4 class="text-center">叹息桥的黄昏你欠我一曲贡多拉</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="storySingleBlock">
+                                    <div class="imgBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/b62bd42d-7ab0-47ad-b472-345af0a38605.jpg?aki_policy=large) "></div>
+                                    <h4 class="text-center">美到窒息，这家民宿的露台是求婚胜地</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="storySingleBlock">
+                                    <div class="imgBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/2617a009-fb31-439c-8c3e-7bb7ac2d4779.jpg?aki_policy=large) "></div>
+                                    <h4 class="text-center">在海湾小船里， 把食材变成颜料，制作手绘明信片</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="storySingleBlock">
+                                    <div class="imgBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/c88b731a-7de7-4f8e-b504-589bbcdce305.jpg?aki_policy=large) "></div>
+                                    <h4 class="text-center">在加州彩色小镇，住进半悬空的帐篷</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="storySingleBlock">
+                                    <div class="imgBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/f9ee732c-632c-415a-b67f-70539a8a293c.jpg?aki_policy=large) "></div>
+                                    <h4 class="text-center">美丽华摩天轮下的免费大师音乐会</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="storySingleBlock">
+                                    <div class="imgBlock" style="background-image: url(https://cn-ali.muscache.com/im/pictures/d12b6e01-91ea-4033-a3ba-ac513cb384bd.jpg?aki_policy=large) "></div>
+                                    <h4 class="text-center">闪闪发光的喀纳斯 旅途绘话</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/javascripts/jQuery/jquery-3.2.1.min.js"></script>
+<script src="/stylesheets/lib/bootstrap-3.3.7/dist/js/bootstrap.min.js"></script>
+<script type="javascript">
+    $('#requestTab a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show')
+    })
+</script>
+</html>

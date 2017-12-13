@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CatalogContentPage</title>
+</head>
+<body>
+    <div class="row">
+        <nav class="nav navbar navbar-default navbar-fixed-top" id="navBar">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">YaoYue</a>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input id="searchInput" type="text" class="form-control " placeholder="Search for..." style="width: 300px;">
+                                <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button" id="searchButton">搜索</button>
+                                    </span>
+                            </div>
+                        </div>
+                    </form>
+                    <% if(isLogined){ %>
+                    <button style="outline: none" id="myButton" type="button" class="btn btn-default navbar-btn myButton" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-user"></span> <%=name%> </button>
+                    <% }else{ %>
+                    <button style="outline: none" id="myButton" type="button" class="btn btn-default navbar-btn myButton" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-user"></span> 我的</button>
+                    <% } %>
+                </div>
+            </div><!--End of container-fluid-->
+        </nav><!--End of nav-->
+    </div><!--End of row-->
+</body>
+<script src="/javascripts/jQuery/jquery-3.2.1.min.js"></script>
+<script src="/javascripts/header.js"></script>
+</html>
+
